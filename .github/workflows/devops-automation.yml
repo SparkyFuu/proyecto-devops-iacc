@@ -1,0 +1,33 @@
+name: Validacion DevOps
+
+on:
+  push:
+    branches: [main, "feature/**"]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Verificar archivos obligatorios
+        run: |
+          test -f src/index.html
+          test -f src/styles.css
+          test -f Dockerfile
+          test -f docker-compose.yml
+          test -f .env.example
+          test -f README.md
+
+      - name: Construir imagen
+        run: docker build -t reserva-medica-devops:ci .
+
+      - name: Probar servicio
+        run: |
+          docker run -d --name reserva-ci -p 8080:80 reserva-medica-devops:ci
+          sleep 2
+          curl --fail http://localhost:8080
+          docker logs reserva-ci
