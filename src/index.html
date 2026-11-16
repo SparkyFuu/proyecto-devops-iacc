@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Demo local para reserva de horas médicas del Hospital San Gabriel.">
+  <title>Hospital San Gabriel | Reserva de horas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <span class="brand">Hospital San Gabriel</span>
+      <p>Portal demostrativo de reserva de horas médicas</p>
+    </div>
+    <div class="status" aria-label="Estado del servicio">
+      <span class="status-dot"></span>
+      Servicio local disponible
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="hero">
+      <p class="tag">Atención ambulatoria</p>
+      <h1>Reserva una hora médica</h1>
+      <p>
+        Esta página corresponde a una simulación académica. No guarda información y no se conecta
+        a una base de datos ni a servicios externos.
+      </p>
+
+      <div class="info-grid">
+        <article>
+          <strong>Horario</strong>
+          <span>Lunes a viernes, 08:00 a 18:00</span>
+        </article>
+        <article>
+          <strong>Confirmación</strong>
+          <span>Canal seleccionado por el paciente</span>
+        </article>
+        <article>
+          <strong>Entorno</strong>
+          <span>Nginx ejecutado localmente con Docker</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="titulo-formulario">
+      <div class="warning">Demo: no ingreses datos personales reales.</div>
+      <h2 id="titulo-formulario">Solicitud de hora</h2>
+      <form action="#" method="get">
+        <label for="especialidad">Especialidad</label>
+        <select id="especialidad" name="especialidad">
+          <option>Medicina general</option>
+          <option>Traumatología</option>
+          <option>Cardiología</option>
+          <option>Dermatología</option>
+        </select>
+
+        <label for="profesional">Profesional</label>
+        <select id="profesional" name="profesional">
+          <option>Profesional disponible 1</option>
+          <option>Profesional disponible 2</option>
+        </select>
+
+        <div class="row">
+          <div>
+            <label for="fecha">Fecha</label>
+            <input id="fecha" name="fecha" type="date">
+          </div>
+          <div>
+            <label for="hora">Hora</label>
+            <select id="hora" name="hora">
+              <option>09:00</option>
+              <option>10:30</option>
+              <option>12:00</option>
+              <option>15:30</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="canal">Canal de confirmación</label>
+        <select id="canal" name="canal">
+          <option>Correo electrónico</option>
+          <option>SMS</option>
+          <option>Llamada telefónica</option>
+        </select>
+
+        <button type="button">Simular reserva</button>
+        <small>El botón es demostrativo y no envía información.</small>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    Proyecto académico DevOps - ejecución local reproducible.
+  </footer>
+</body>
+</html>
